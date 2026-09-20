@@ -1,0 +1,282 @@
+\documentclass[10pt]{beamer}
+
+\newcommand{\lectnum}{L01}
+\newcommand{\lecttitle}{Unit Introduction}
+
+\input{preamble.tex}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north west, xshift=0.4cm, yshift=-0.4cm] at (current page.north west)
+      {\includegraphics[width=3.4cm]{figs/uob_logo.png}};
+  \end{tikzpicture}
+  \titlepage
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Welcome}
+
+\begin{itemize}
+\item Welcome to COMS20018, Introduction to Artificial Intelligence!
+\item Lecturers:
+\end{itemize}
+
+\vspace{6pt}
+\centerline{
+\begin{tikzpicture}[
+  card/.style={align=center, text width=3.1cm}
+]
+  \node[card] (p1) {\includegraphics[width=2.2cm]{figs/staff_mz.png}\\[2pt]
+    \textbf{Mengyan Zhang}\\{\small Unit Director}};
+  \node[card, right=0.3cm of p1] (p2) {\includegraphics[width=2.2cm]{figs/staff_nl.png}\\[2pt]
+    \textbf{Nan Lu}};
+  \node[card, right=0.3cm of p2] (p3) {\includegraphics[width=2.2cm]{figs/staff_jc.png}\\[2pt]
+    \textbf{James Cussens}};
+\end{tikzpicture}}
+
+\vspace{6pt}
+\begin{itemize}
+\item Teaching Assistants:
+  \begin{itemize}
+  \item Yuming Li, Siddhant Bansal
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Where to Find Everything}
+
+  \begin{itemize}
+  \item Unit GitHub page (public):
+    \begin{itemize}
+    \item \href{https://uob-coms20018.github.io/}{https://uob-coms20018.github.io/}
+    \item Schedule, lecture slides, and lab notebooks, updated as the unit
+      progresses
+    \end{itemize}
+  \item Blackboard Ultra page:
+    \begin{itemize}
+    \item Used for material that can't be public, e.g.\ assessment
+      submission
+    \item Unit announcements
+    \end{itemize}
+  \item Teams chat:
+    \begin{itemize}
+    \item Ask questions
+    \end{itemize}
+  \end{itemize}
+
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{What This Unit Covers}
+
+  \begin{itemize}
+  \item The foundations and contemporary landscape of Artificial
+    Intelligence:
+    \begin{itemize}
+    \item history, theory, practical applications, and philosophy
+    \end{itemize}
+  \item Core topics:
+    \begin{itemize}
+    \item Machine learning (regression/classification, neural networks,
+      generative models)
+    \item Large language models
+    \item Causal inference \textperiodcentered\ Reinforcement learning
+      \textperiodcentered\ Computer vision
+    \item Philosophy of AI \textperiodcentered\ Ethics \textperiodcentered\
+      Trustworthy AI
+    \end{itemize}
+  \item Reading materials are listed on the unit website
+  \item A hands-on approach throughout, via weekly labs.
+  \end{itemize}
+
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{What Background You Need}
+
+\begin{itemize}
+\item This unit builds directly on first-year COMS foundations. You
+  should already have:
+\end{itemize}
+
+\centerline{
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  card/.style={rectangle, rounded corners, draw=red!55!black, thick, fill=red!4,
+    minimum width=4.4cm, minimum height=2.6cm, align=center, text width=4cm}
+]
+  \node[card] (c1) {\textbf{Programming}\\[4pt]{\small
+    COMS10016\\ Imperative \& Functional\\[3pt]
+    + COMS10018\\ OOP \& Algorithms}};
+  \node[card, right=0.6cm of c1] (c2) {\textbf{Computer Systems}\\[4pt]{\small
+    COMS10015\\ Computer Architecture\\[3pt]
+    + COMS10012\\ Software Tools}};
+  \node[card, right=0.6cm of c2] (c3) {\textbf{Mathematics}\\[4pt]{\small
+    COMS10014\\ Maths for CS A\\[3pt]
+    + COMS10013\\ Maths for CS B}};
+\end{tikzpicture}}}
+
+\vspace{8pt}
+\begin{itemize}
+\item In short: comfort with programming, algorithmic thinking, and
+  discrete maths / mathematical foundations for computing.
+\item All coding on this unit is in Python; we will cover Introduction
+  to Python in the first week's lab.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Learning Outcomes}
+
+  \begin{itemize}
+  \item By the end of this unit, you will be able to:
+    \begin{itemize}
+    \item Identify the opportunities and challenges of different AI
+      approaches
+    \item Deploy, interact with, and evaluate AI systems
+    \item Explain the theoretical insights underpinning AI approaches
+    \item Discuss how to apply AI methods to novel problems, effectively
+      and responsibly
+    \end{itemize}
+  \end{itemize}
+
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Unit Schedule}
+
+\centerline{\includegraphics[width=0.98\textwidth]{figs/schedule_screenshot.png}}
+
+\vspace{4pt}
+{\footnotesize Full schedule, kept up to date, at
+\href{https://uob-coms20018.github.io/}{uob-coms20018.github.io}.}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Teaching Sessions}
+
+  \begin{itemize}
+  \item Lecture 1: Mondays, 11:00--12:00, Fry Building G.09
+  \item Lecture 2: Tuesdays, 15:00--16:00, Fry Building G.09
+  \item Lab/Seminar: Wednesdays, 11:00--13:00, MVB 1.15 (Linux computer
+    lab)
+  \item Week 6 is a consolidation week, no scheduled teaching.
+  \item Week 12 is revision week (no lab, first lecture as a drop-in
+    session).
+  \end{itemize}
+
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Assessment}
+
+\begin{itemize}
+\item You are assessed via three elements:
+\end{itemize}
+
+\centerline{
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  stat/.style={rectangle, rounded corners, thick, minimum height=2.1cm,
+    align=center, font=\Large\bfseries, text=white}
+]
+  \node[stat, fill=red!65!black, minimum width=2.2cm] (s1) {20\%};
+  \node[below=2pt of s1, align=center, text width=2.6cm, font=\small]
+    {Mid-term video presentation};
+  \node[stat, fill=red!45!black, minimum width=2.2cm, right=0.5cm of s1] (s2) {20\%};
+  \node[below=2pt of s2, align=center, text width=2.6cm, font=\small]
+    {Lab-based assessments};
+  \node[stat, fill=orange!85!black, minimum width=6.6cm, right=0.5cm of s2] (s3) {60\%};
+  \node[below=2pt of s3, align=center, text width=4cm, font=\small]
+    {End-of-term exam};
+\end{tikzpicture}}}
+
+\vspace{10pt}
+\begin{itemize}
+\item A mid-term video presentation (20\% of the unit)
+\item A series of laboratory-based assessments (20\% of the unit)
+\item An end-of-term exam (60\% of the unit), closed book
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Assessment: Mid-term Video (20\%)}
+
+\begin{itemize}
+\item \textbf{Format:} individual, up to 15 minutes, submitted as a video
+  file on Blackboard.
+\item \textbf{Task:} choose one topic $\to$ one question $\to$ 1--2
+  papers to discuss in relation to it.
+\item \textbf{Scope:} topics drawn from Weeks 2--5 (Machine Learning
+  $\to$ Deep Learning $\to$ LLMs $\to$ Philosophy of AI).
+\item \textbf{Timing:} topic/question/paper menu will be released by the end of
+  Week 3; deadline is mid Week 7.
+\item Full topic list, marking criteria, and submission details will be
+  posted on Blackboard.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Assessment: Lab-Based Work (20\%)}
+
+\begin{itemize}
+\item \textbf{Weekly cycle:} notebook released Wednesday $\to$ you submit
+  your completed notebook by \textbf{Sunday 23:59} $\to$ answers released
+  the following Monday.
+\item \textbf{Assessed weeks:} 3, 4, 7, 8, 9, 11 
+\item \textbf{Best-5-of-6:} your 1 lowest-scoring lab is automatically
+  dropped, so the 20\% is earned from your best 5 labs, each worth 4\% of the unit.
+\item Full submission and marking details will be posted on Blackboard.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Labs \& Software Setup}
+
+  \begin{itemize}
+  \item All coding is in Python, using packages such as
+    \texttt{scikit-learn} and \texttt{PyTorch}.
+  \item We use Jupyter Notebook, running in Google Colab; you can also
+    use:
+    \begin{itemize}
+    \item a UoB machine (MVB 1.15):
+      \begin{itemize}
+      \item Reboot into Linux if necessary
+      \item Open a terminal and run: \texttt{module load anaconda/3-2025}
+      \end{itemize}
+    \item your own machine:
+      \begin{itemize}
+      \item Install \href{https://www.anaconda.com}{Anaconda}
+        (anaconda.com)
+      \item We're happy to help with install problems, but can't guarantee
+        to fix everything
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Getting Help}
+
+  \begin{itemize}
+  \item Feel free to ask questions during labs and seminars.
+  \item Post questions on Teams chat.
+  \item Full details (assessment timing, submission, format) will be
+    posted on Blackboard as they are confirmed.
+  \end{itemize}
+
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\vfill
+\begin{center}
+\Huge Any questions?
+\end{center}
+\vfill
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
