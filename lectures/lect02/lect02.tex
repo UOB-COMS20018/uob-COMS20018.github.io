@@ -1,0 +1,408 @@
+\documentclass[10pt]{beamer}
+
+\newcommand{\lectnum}{L03}
+\newcommand{\lecttitle}{Linear Regression and Classification: Part I}
+
+\input{preamble.tex}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north west, xshift=0.4cm, yshift=-0.4cm] at (current page.north west)
+      {\includegraphics[width=3.4cm]{figures/uob_logo.png}};
+  \end{tikzpicture}
+  \titlepage
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+
+  \frametitle{Agenda}
+  \begin{itemize}
+  \item Categories of machine learning \hfill
+    \begin{itemize}
+    \item Supervised, unsupervised, reinforcement learning
+    \item Self-supervised \& semi-supervised learning
+    \item Where today fits: regression
+    \end{itemize}
+  \item Model selection \hfill
+    \begin{itemize}
+    \item Training, validation \& test data
+    \item Cross-validation
+    \end{itemize}
+  \item Linear regression: least squares \hfill
+    \begin{itemize}
+    \item Curve fitting
+    \item Linear basis function models
+    \item Least squares
+    \item The normal equations
+    \item Worked example
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Categories of machine learning (1/3)}
+
+\centerline{\includegraphics[height=3.6cm]{figures/finance_chart.png}}
+
+\vspace{6pt}
+\centerline{\textbf{Supervised}, forecasting a price (regression)}
+
+\vspace{14pt}
+\begin{itemize}
+\item Given labelled examples $\{(x_n,t_n)\}_{n=1}^N$, learn a mapping
+  $x \mapsto t$.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Categories of machine learning (2/3)}
+
+\centerline{\includegraphics[height=3.6cm]{figures/unsupervised_diagram.png}}
+
+\vspace{6pt}
+\centerline{\textbf{Unsupervised}, customer segmentation (clustering)}
+
+\vspace{14pt}
+\begin{itemize}
+\item Given only \emph{unlabelled} data $\{x_n\}_{n=1}^N$, find structure,
+  e.g.\ clusters, or the underlying density.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Categories of machine learning (3/3)}
+
+\centerline{\includegraphics[height=3.6cm]{figures/alphago.jpg}}
+
+\vspace{6pt}
+\centerline{\textbf{Reinforcement}, AlphaGo (game-playing)}
+
+\vspace{14pt}
+\begin{itemize}
+\item An agent learns from \emph{reward} signals produced by its own
+  actions, not from labelled examples; not covered by lectures on this
+  unit, see Week 9's lab.
+\end{itemize}
+
+{\scriptsize Image: board position after AlphaGo's ``divine move'' 78 vs.\
+Lee Sedol (2016). Axd, Wikimedia Commons, CC BY-SA 4.0.}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Two more flavours: self-supervised \& semi-supervised}
+
+\begin{itemize}
+\item \textbf{Self-supervised}: labels are generated automatically from
+  the data itself, e.g.\ predict the next word, or a masked-out image
+  patch
+  \begin{itemize}
+  \item Powers modern LLM pretraining (recall the ``AI Tools'' example
+    from L02); no human-annotated labels needed
+  \end{itemize}
+\item \textbf{Semi-supervised}: a small labelled set
+  $\{(x_n,t_n)\}_{n=1}^N$ plus a much larger \emph{unlabelled} pool
+  $\{x_m\}_{m=1}^M$ (with $M \gg N$)
+  \begin{itemize}
+  \item Labels are expensive, raw data is cheap; use the unlabelled
+    data to learn structure, then fit it to the few labels you have
+  \end{itemize}
+\item[$\Rightarrow$] Both sit between supervised and unsupervised
+  learning, useful whenever labels are scarce but data is not
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Model selection: training, validation \& test data}
+
+\begin{itemize}
+\item Many models (or hyperparameters, e.g.\ the polynomial order $M$
+  we meet next) are candidates, how do we choose between them?
+\item[$\Rightarrow$] Split the data into three disjoint sets:
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Training set}: used to fit the parameters $\bs{w}$ of
+  each candidate model.
+\item \textbf{Validation set}: held out from training, used to compare
+  candidate models/hyperparameters and pick the best one.
+\item \textbf{Test set}: held out entirely until the very end, used
+  \emph{once} to give an unbiased estimate of performance on new data.
+\end{itemize}
+
+\vspace{6pt}
+\begin{itemize}
+\item[$\Rightarrow$] Never choose a model using test-set performance;
+  that would bias the estimate of how well it generalises.
+\item[$\Rightarrow$] Never \emph{test} on the training set either;
+  training error is optimistically biased and does not reflect
+  performance on new data.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Cross-validation}
+
+\begin{columns}[T]
+\begin{column}{0.45\textwidth}
+\centerline{\includegraphics[width=\textwidth]{figures/prml_fig1_18.png}}
+
+\vspace{4pt}
+{\scriptsize Bishop, \emph{PRML} (2006), Fig.\ 1.18: 4-fold
+cross-validation, in each of the 4 runs, one block (red) is held out
+for validation and the rest (white) used for training.}
+\end{column}
+\begin{column}{0.52\textwidth}
+\begin{itemize}
+\item Problem: a fixed validation split wastes data that could
+  otherwise be used for training, costly when labelled data is
+  scarce.
+\item \textbf{$S$-fold cross-validation}: partition the data into $S$
+  groups. In turn, train on $S{-}1$ groups and validate on the
+  remaining one; average performance over the $S$ runs.
+\item Extreme case $S{=}N$: \textbf{leave-one-out} cross-validation.
+\end{itemize}
+\end{column}
+\end{columns}
+
+\vspace{6pt}
+\begin{itemize}
+\item[$\Rightarrow$] Cost: training must be repeated $S$ times; fine
+  for cheap models, expensive for large ones (e.g.\ deep networks).
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Today: supervised learning, regression}
+
+\begin{itemize}
+\item Within supervised learning, the target $t$ can be:
+  \begin{itemize}
+  \item continuous $\Rightarrow$ \textbf{regression} (e.g.\ house price from
+    features, the price-forecasting example above).
+  \item discrete (a class label) $\Rightarrow$ \textbf{classification}
+    (e.g.\ spam or not, dog or bagel); next lecture.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item[$\Rightarrow$] \textbf{Today}: regression, curve fitting and least
+  squares. Classification, and more on regression, follow next lecture.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Motivating example: polynomial curve fitting}
+
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\centerline{\includegraphics[width=\textwidth]{figures/prml_fig1_2.png}}
+
+\vspace{4pt}
+{\scriptsize Bishop, \emph{Pattern Recognition and Machine Learning}
+(2006), Fig.\ 1.2: $N{=}10$ points (blue) sampled from $\sin(2\pi x)$
+(green) plus random noise.}
+\end{column}
+\begin{column}{0.57\textwidth}
+\begin{itemize}
+\item Training set: $N$ observations of an input $x$, together with a
+  target $t$: $\{(x_n,t_n)\}_{n=1}^N$.
+\item For our running example, take $x$ and $t$ to be \textbf{scalars}
+  (1D), as in the plot on the left, where $t_n$ is generated from
+  $\sin(2\pi x_n)$ plus random noise.
+\item Goal: predict $t$ for a \emph{new} $x$, i.e.\ learn a function
+  $y(x,\bs{w})$.
+\end{itemize}
+\end{column}
+\end{columns}
+
+\vspace{6pt}
+\begin{itemize}
+\item Fit a polynomial of order $M$:
+\[
+y(x,\bs{w}) = w_0 + w_1 x + w_2 x^2 + \cdots + w_M x^M = \sum_{j=0}^{M} w_j x^j
+\]
+\item $\bs{w} = (w_0, w_1, \dots, w_M)^\top$ is the \textbf{weight
+  vector}, the $M{+}1$ parameters we need to learn from the data.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Linear basis function models}
+
+\begin{itemize}
+\item In general:
+\[
+y(x,\bs{w}) = \sum_{j=0}^{M-1} w_j\, \phi_j(x) = \bs{w}^\top \bs\phi(x)
+\]
+where $\phi_0(x) = 1$ (a bias term) and $\phi_1,\dots,\phi_{M-1}$ are fixed
+\textbf{basis functions}.
+\end{itemize}
+
+\begin{itemize}
+\item Common choices: polynomials ($\phi_j(x)=x^j$), Gaussians
+  $\phi_j(x) = \exp\{-(x-\mu_j)^2/2s^2\}$, sigmoidal
+  $\phi_j(x) = \sigma\bigl((x-\mu_j)/s\bigr)$.
+\item[$\Rightarrow$] \textbf{Linear model} means linear in $\bs{w}$, \emph{not}
+  linear in $x$ 
+% \item A neural network (L04) relaxes exactly this: it \emph{learns} the
+  % basis functions from data, instead of fixing them by hand.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Least squares}
+
+\begin{itemize}
+\item Measure how well $y(x,\bs{w})$ fits the data with the
+  \textbf{sum-of-squares error function}:
+\[
+E_D(\bs{w}) = \frac{1}{2}\sum_{n=1}^{N} \bigl\{t_n - y(x_n,\bs{w})\bigr\}^2
+\]
+\item \textbf{Least squares}: choose $\bs{w}$ to minimise $E_D(\bs{w})$.
+\end{itemize}
+
+\begin{columns}[T]
+\begin{column}{0.45\textwidth}
+\centerline{\includegraphics[width=\textwidth]{figures/prml_fig1_3.png}}
+
+\vspace{2pt}
+{\scriptsize Bishop, \emph{PRML} (2006), Fig.\ 1.3: each green bar is
+one displacement $\{t_n - y(x_n,\bs{w})\}$, squared and summed to
+give $E_D(\bs{w})$.}
+\end{column}
+\begin{column}{0.52\textwidth}
+\begin{itemize}
+\item Why squared error? Simple to optimise (differentiable, convex in
+  $\bs{w}$), and, as we'll see shortly, it falls out naturally once we
+  assume \textbf{Gaussian noise}.
+\item[$\Rightarrow$] Because $y$ is linear in $\bs{w}$, $E_D$ is a
+  \emph{quadratic} function of $\bs{w}$; it has a unique minimum,
+  solvable in closed form.
+\end{itemize}
+\end{column}
+\end{columns}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Solving least squares: the normal equations}
+
+\begin{itemize}
+\item Stack the data: design matrix $\Phi \in \mathbb{R}^{N\times M}$ with
+  $\Phi_{nj} = \phi_j(x_n)$, target vector $\bs{t} = (t_1,\dots,t_N)^\top$.
+  Then $E_D(\bs{w}) = \frac12\|\bs{t}-\Phi\bs{w}\|^2$.
+\item Differentiating w.r.t.\ $\bs{w}$:
+\[
+\nabla_{\bs{w}} E_D(\bs{w}) = \Phi^\top\Phi\,\bs{w} - \Phi^\top\bs{t}
+\]
+\item Setting $\nabla_{\bs{w}} E_D(\bs{w}) = 0$ gives the \textbf{normal
+  equations}:
+\[
+\Phi^\top \Phi\, \bs{w} = \Phi^\top \bs{t}
+\]
+\item Solution (the \textbf{least-squares}, or maximum-likelihood, estimate):
+\[
+\bs{w}_{\mathrm{ML}} = \bigl(\Phi^\top \Phi\bigr)^{-1} \Phi^\top \bs{t} =
+\Phi^\dagger \bs{t}
+\]
+where $\Phi^\dagger$ is the (Moore-Penrose) \textbf{pseudo-inverse} of
+$\Phi$.
+\end{itemize}
+
+% \begin{itemize}
+% \item[$\Rightarrow$] One matrix computation gives the optimal $\bs{w}$
+%   directly, no iterative search needed (though $\Phi^\top\Phi$ can be
+%   ill-conditioned; more on numerical fixes when we meet regularization).
+% \end{itemize}
+
+\vspace{6pt}
+{\scriptsize See Bishop, \emph{PRML} (2006), Section 3.1.1, for the full
+derivation.}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Least squares: a worked example}
+
+\small
+\begin{example}
+Fit a straight line $y(x,\bs{w}) = w_0 + w_1 x$ (i.e.\ basis functions
+$\phi_0(x){=}1$, $\phi_1(x){=}x$, so $M{=}2$) to the data:
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$x_n$ & $-1$ & $0$ & $1$ & $2$\\ \hline
+$t_n$ & $0$ & $1$ & $3$ & $9$
+\end{tabular}
+\end{center}
+\end{example}
+
+\uncover<2->{$\bs{t} = \begin{bmatrix} 0\\ 1\\ 3\\ 9 \end{bmatrix}$}
+\hspace{6pt}
+\uncover<3->{$\Phi = \begin{bmatrix} 1 &-1\\ 1&0\\ 1 &1\\ 1 &2 \end{bmatrix}$}
+\hspace{6pt}
+\uncover<4->{$\Phi^\top \Phi = \begin{bmatrix} 1 &1 &1 &1\\ -1 &0 &1 &2
+  \end{bmatrix} \begin{bmatrix} 1 &-1\\ 1&0\\ 1 &1\\ 1 &2 \end{bmatrix} =
+  \begin{bmatrix} 4 &2\\ 2 &6\end{bmatrix}$}
+
+\uncover<5->{$\bs{w}_{\mathrm{ML}} = (\Phi^\top \Phi)^{-1} \Phi^\top \bs{t}$}
+\uncover<6->{$= \dfrac{1}{20}\begin{bmatrix} 6 &-2\\ -2 &4 \end{bmatrix}$}
+\uncover<7->{$\begin{bmatrix} 1 &1 &1 &1\\ -1 &0 &1 &2 \end{bmatrix}$}
+\uncover<8->{$\begin{bmatrix} 0\\ 1\\ 3\\ 9 \end{bmatrix}$}
+\uncover<9->{$= \begin{bmatrix} 1.8\\ 2.9 \end{bmatrix}$}
+
+\uncover<10->{$\Rightarrow\ y(x,\bs{w}_{\mathrm{ML}}) = 1.8 + 2.9\,x$}
+
+\vspace{6pt}
+{\scriptsize Example adapted from the \emph{Machine Learning} unit
+(COMS30035).}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Summary}
+
+\begin{itemize}
+\item \textbf{Categories of machine learning}: supervised, unsupervised,
+  reinforcement; today, we focus on supervised learning.
+\item \textbf{Model selection}: split data into training, validation
+  \& test sets; use cross-validation when labelled data is scarce.
+\item \textbf{Regression}: target $t$ continuous.
+\item \textbf{Least squares}: choose $\bs{w}$ to minimise the
+  sum-of-squares error $E_D(\bs{w})$; solved in closed form via the
+  normal equations, $\bs{w}_{\mathrm{ML}} = \Phi^\dagger \bs{t}$.
+\item \textbf{Basis functions} $\bs\phi(x)$ let a \emph{linear-in-$\bs{w}$}
+  model fit nonlinear-in-$x$ data.
+\item[$\Rightarrow$] Next lecture: the probabilistic view of least
+  squares, stochastic gradient descent, regularization, and
+  classification (logistic regression).
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Reading}
+
+  \begin{itemize}
+  \item Bishop, C.\,M., \emph{Pattern Recognition and Machine Learning}
+    (2006).
+    \href{https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf}{Free
+      online}.
+  \item Today's material: Chapter 1 (\S1.1, \S1.3), Chapter 3 (\S3.1).
+  % \item We follow Bishop's notation throughout, inputs $x$, targets $t$,
+    % basis functions $\bs\phi(x)$, weights $\bs{w}$.
+  \end{itemize}
+
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
