@@ -5,6 +5,8 @@
 \usepackage{relsize}
 \usepackage[british]{babel}
 \usepackage{tikz,tikzsymbols}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
 \usepackage{hyperref}
 \usepackage{cancel}
 \usepackage{caption,subcaption}
@@ -24,16 +26,14 @@
 
 \setbeamertemplate{sidebar right}{}
 \setbeamertemplate{footline}{%
-\leavevmode%
-\hbox to \paperwidth{\hfil\usebeamertemplate***{navigation symbols}%
-\hspace{0.4cm}\lectnum: \insertframenumber{}/\inserttotalframenumber\hspace*{0.4cm}}%
-\vspace{2pt}}
+\hfill\usebeamertemplate***{navigation symbols}
+\hspace{0.4cm}\lectnum: \insertframenumber{}/\inserttotalframenumber \hspace*{0.4cm}}
 
 \author{Mengyan Zhang}
 
 \title{COMS20018, Introduction to AI:\\ \vspace{5pt} \lecttitle}
 
 \institute{School of Computer Science\\University of Bristol}
-\date{22nd September 2026}
+\date{28th September 2026}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
