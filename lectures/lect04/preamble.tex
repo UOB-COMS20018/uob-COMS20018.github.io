@@ -1,0 +1,46 @@
+\usepackage{amsmath, amssymb, graphicx}
+\usepackage[]{algorithm2e}
+\usepackage{pdfpages}
+\usepackage{bm}
+\usepackage{relsize}
+\usepackage[british]{babel}
+\usepackage{tikz,tikzsymbols}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage{listings}
+\lstset{language=Python, basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\bfseries\color{blue!60!black},
+  commentstyle=\color{gray}, stringstyle=\color{red!60!black},
+  showstringspaces=false, columns=flexible, keepspaces=true,
+  frame=single, rulecolor=\color{gray!40}, backgroundcolor=\color{gray!5},
+  xleftmargin=2pt, xrightmargin=2pt}
+\usepackage{hyperref}
+\usepackage{cancel}
+\usepackage{caption,subcaption}
+\usepackage{adjustbox}
+\usepackage{overpic}
+\usepackage[UKenglish]{isodate}
+
+\usetikzlibrary{arrows,decorations.markings,positioning}
+
+\newcommand{\bs}{\boldsymbol}
+
+
+\hypersetup{colorlinks,linkcolor=,urlcolor=blue}
+\newenvironment{titledslide}[1]{\begin{frame}\frametitle{#1}}{\end{frame}}
+
+\mode<presentation>{\setbeamercovered{transparent}}
+
+\setbeamertemplate{sidebar right}{}
+\setbeamertemplate{footline}{%
+\hfill\usebeamertemplate***{navigation symbols}
+\hspace{0.4cm}\lectnum: \insertframenumber{}/\inserttotalframenumber \hspace*{0.4cm}}
+
+\author{Mengyan Zhang}
+
+\title{COMS20018, Introduction to AI:\\ \vspace{5pt} \lecttitle}
+
+\institute{School of Computer Science\\University of Bristol}
+\date{29th September 2026}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
