@@ -1,0 +1,141 @@
+COMS20018 Introduction to Artificial Intelligence
+How to submit your lab notebook (assessed labs)
+===============================================
+
+Each assessed lab is marked by a program that runs your code. Please follow
+these rules. If you do not follow them, your notebook may not be marked
+correctly.
+
+
+1. Which labs count, and when to submit
+---------------------------------------
+
+- Assessed labs: weeks 3, 4, 7, 8, 9 and 11. The other labs are not marked.
+- Each week: the notebook is released on Wednesday. Submit your completed
+  notebook by Sunday 23:59. The answers are released on the next Monday.
+- A late submission gets 0 marks.
+
+
+2. How your lab is marked
+-------------------------
+
+- Each graded exercise is pass or fail. There are no part marks.
+- An exercise passes if your answer cell and the assert cell after it run
+  with no error. An error in one exercise does not make other exercises fail.
+- All graded exercises in a lab have the same mark. Your mark out of 100 is:
+
+      100 x (exercises passed) / (number of graded exercises)
+
+  For example, Lab 3 has 7 graded exercises, so each one is worth about 14.3
+  marks.
+- Optional parts are not marked.
+- Best 5 of 6: your lowest lab mark is dropped. Your best 5 labs give 20% of
+  the unit mark (4% each).
+
+
+3. Use the notebook that we give you
+------------------------------------
+
+- Open the student notebook that we give you in Google Colab or Jupyter, and
+  write your answers in it.
+- Do not copy your code into a new notebook. The marking program finds your
+  answers by the cells of our notebook.
+
+
+4. Write your code only in the answer cells
+-------------------------------------------
+
+- Each graded exercise has one answer cell. It starts with this line:
+
+      # Please write your codes here.
+
+  Keep that first line.
+- Do not delete, move, split or merge the answer cells.
+- The marking program copies only your answer cells into the original
+  notebook, and then runs it. Code that you write in other cells is not used.
+  So put all the code for an exercise in its answer cell, including any
+  helper function or extra import that you add.
+- You can use the functions from your earlier answer cells. For example, your
+  answer to Exercise 2 can use your function from Exercise 1.
+- Do not write again a function or class that the notebook gives you (for
+  example DigitVAE in Lab 3).
+- Do not change the other cells (setup cells and assert cells). If you change
+  one while you work, for example RUN_EXTENDED_EXPERIMENTS = True, set it back
+  before you submit. The marking program always uses the original cells.
+
+
+5. Do not do these things in an answer cell
+-------------------------------------------
+
+- Do not install packages or run shell commands (for example "!pip install",
+  subprocess or os.system).
+- Do not use notebook commands that start with "%" or "%%".
+- Do not use exec() or eval(). (model.eval() in PyTorch is fine.)
+- Do not use globals(), vars() or get_ipython().
+- Do not change a library, for example "torch.something = ...".
+- Do not read files that the notebook does not make. Your notebook runs in
+  an empty folder.
+- Do not use code that works only in Colab: no "/content/..." paths, no code
+  that needs a GPU, and no packages that the notebook does not already use.
+  (Python's standard library, for example math, is fine.)
+- Do not set RUN_EXTENDED_EXPERIMENTS in an answer cell.
+
+If you do any of these things, your code can fail when it is marked.
+
+
+6. Make sure your notebook runs from top to bottom
+--------------------------------------------------
+
+- A correct notebook runs in a few minutes on a CPU. Code that runs for
+  too long (for example an infinite loop) is stopped, and that exercise fails.
+- Before you submit, restart the notebook and run all the cells:
+    - Colab:      Runtime > Restart session and run all
+    - JupyterLab: Kernel > Restart Kernel and Run All Cells
+- Check that there is no error, and that the assert cell after each graded
+  answer runs with no error.
+- Then save the notebook.
+
+
+7. Give your file the correct name
+----------------------------------
+
+Add your University username to the end of the file name, after an
+underscore:
+
+    <notebook name>_<your username>.ipynb
+
+For example, for Lab 3 the student ab12345 submits:
+
+    Week3_lab_student_ab12345.ipynb
+
+- Your username is the first part of your University email address. For
+  ab12345@bristol.ac.uk, the username is ab12345.
+- Do not use your 7-digit student number (on your UCard). Use your username.
+- In Colab, the file name is the title at the top left. To change it, click
+  the title, or use File > Rename.
+
+
+8. Download and upload one .ipynb file
+--------------------------------------
+
+- In Colab, use File > Download > Download .ipynb.
+- Submit it on Blackboard: Course Webpage on Blackboard > Gradebook >
+  Lab Based Assessment x (x is the number of the assessment for this lab) >
+  View Instructions > Upload a file.
+- Upload only this one .ipynb file. Do not upload a .py, .pdf, .html or .zip
+  file, and do not submit a link to Colab.
+- Do not upload more than one notebook.
+
+
+Checklist before you submit
+---------------------------
+
+[ ] I wrote my answers in the notebook that was given to me.
+[ ] My code for each exercise is in its answer cell, and the first line
+    "# Please write your codes here." is still there.
+[ ] I did "Restart and run all", and all the assert cells ran with no error.
+[ ] RUN_EXTENDED_EXPERIMENTS is False (if the notebook has it).
+[ ] The file name ends with my username, for example
+    Week3_lab_student_ab12345.ipynb.
+[ ] I am uploading one .ipynb file only.
+[ ] I am submitting before Sunday 23:59.
