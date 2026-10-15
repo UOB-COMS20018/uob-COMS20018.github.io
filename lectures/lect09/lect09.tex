@@ -15,5 +15,316 @@
   \titlepage
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Agenda}
+
+We're going to look at two papers which are important in the history
+of the philosophy of AI:
+
+\begin{enumerate}
+\item \href{https://www.cs.ox.ac.uk/activities/ieg/e-library/sources/t_article.pdf}{\emph{Computing Machinery and Intelligence} by Alan Turing,
+  \emph{Mind}, 59, 433-460, 1950}.
+\item \href{https://web-archive.southampton.ac.uk/cogprints.org/7150/1/10.1.1.83.5248.pdf}{\emph{Minds, brains, and programs} by John Searle, \emph{Behavioral and
+    Brain Sciences} 3 (3): 417-457, 1980}.
+\end{enumerate}
+
+The link above to Searle's paper only takes you to a pre-print which
+does not contain critiques of Searle by other authors. To get the full
+paper (as a PDF), you need to go via the University library.
+
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Asking ``Can machines think?''}
+
+  \begin{itemize}
+  \item Turing starts his paper as follows:
+  \end{itemize}
+
+  \begin{quotation}
+    I propose to consider the question, ``Can machines think?'' This
+    should begin with definitions of the meaning of the terms
+    ``machine'' and ``think.''
+  \end{quotation}
+
+  This is a typical approach in philosophy: first consider what we
+  even mean by the question we are investigating.
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Not asking ``Can machines think?''}
+
+  \begin{itemize}
+  \item Turing quickly decides that the question ``Can machines
+    think?'' is too ambiguous.
+  \item He later says it is: ``too meaningless to deserve discussion''
+  \item The key innovation of his \emph{Mind} paper is to
+    \textbf{replace} the original question with another ``which is
+    closely related to it and is expressed in relatively unambiguous
+    words.''
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{The Imitation Game}
+
+  \begin{itemize}
+  \item Turing imagines a game where a machine attempts to trick an
+    interrogator into thinking it to be human.
+  \item Turing calls it ``The Imitation Game'', later it became known
+    as the ``Turing Test''.
+  \item Turing's new question is: what will happen when a machine
+    plays the imitation game?
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{What sort of machine?}
+
+  \begin{itemize}
+  \item ``we wish to exclude from the machines men born in the usual
+    manner.''
+  \item ``we only permit digital computers to take part in our game.''
+  \item Turing then goes on to demonstrate the universality of Turing
+    machines (although he doesn't call them that!)
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Turing's prediction on the Turing test}
+
+  \begin{quote}
+    I believe that in about fifty years' time it will be possible, to
+    programme computers, with a storage capacity of about 109, to make
+    them play the imitation game so well that an average interrogator
+    will not have more than 70 per cent chance of making the right
+    identification after five minutes of questioning
+  \end{quote}
+
+  \begin{itemize}
+  \item OK, so had the `Turing test' been passed in $\sim$ 2000?
+  \item Has the `Turing test' now been passed?
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Turing's prediction on ``educated opinion''}
+
+  \begin{quote}
+    \dots I believe that at the end of the century the use of words
+    and general educated opinion will have altered so much that one
+    will be able to speak of machines thinking without expecting to be
+    contradicted.
+  \end{quote}
+
+  \begin{itemize}
+  \item Was he right?
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Arguments against Turing machines thinking: Uncomputability}
+
+  \begin{itemize}
+  \item Turing machines are limited: there are uncomputable problems,
+    e.g.\ the Halting Problem
+  \item But what about human limitations?
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Arguments against Turing machines thinking:
+    Discreteness}
+
+  \begin{itemize}
+  \item Computers are discrete, whereas brains are continuous.
+  \item A discrete machine can approximate continuous quantities to
+    any desired degree of precision (consider floating point numbers)
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Arguments against Turing machines thinking:
+    Lovelace's objection}
+
+
+  \begin{itemize}
+  \item Ada Lovelace: machines just do what we tell them to do.
+  \item In the section on ``Learning Machines'', Turing says:
+  \end{itemize}
+
+  \begin{quote}
+    Instead of trying to produce a programme to simulate the adult
+    mind, why not rather try to produce one which simulates the
+    child's? If this were then subjected to an appropriate course of
+    education one would obtain the adult brain.
+  \end{quote}
+
+  \begin{itemize}
+  \item Turing postulates a machine learning rules (symbolic learning)
+    using a form of reinforcement learning.
+  \end{itemize}
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{titledslide}{Machine learning of natural language}
+
+  \begin{quote}
+    It can also be maintained that it is best to provide the machine
+    with the best sense organs that money can buy, and then teach it
+    to understand and speak English. This process could follow the
+    normal teaching of a child. Things would be pointed out and named,
+    etc.
+  \end{quote}
+
+  \begin{itemize}
+  \item How does this relate to how LLMs are trained?
+  \item There's an argument here for \emph{embodied AI}.
+  \end{itemize}
+    
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Searle's claim}
+
+
+  \begin{enumerate}
+  \item ``Intentionality in human beings (and animals) is a product of
+    causal features of the brain.''
+  \item ``Instantiating a computer program is never by itself a
+    sufficient condition of intentionality''
+  \end{enumerate}
+
+  Also: ``\dots \emph{only} a machine could think, and only very
+  special kinds of machines, namely brains and machines with internal
+  causal powers equivalent to those of brains.'' and ``no program by
+  itself is sufficient for thinking''.
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{The Chinese room}
+
+
+  \begin{itemize}
+  \item Searle imagines himself locked in a room with 3 batches of
+    Chinese writing.
+  \item Searle is completely ignorant of the Chinese language (spoken
+    or written) and cannot even distinguish Chinese characters from
+    ``meaningless squiggles''.
+  \item Unknown to Searle, the 3 batches are a ``script'', a ``story''
+    and some questions about the story.
+  \item Searle is given instructions in English (``the program'') that
+    enable him to ``correlate elements'' of what's in the 3 batches of
+    Chinese writing to generate answers (in Chinese) to the questions.
+    
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{The Chinese room (continued)}
+
+  Searle imagines that:
+  \begin{quote}
+    I get so good at following the instructions for manipulating the
+    Chinese symbols and the programmers get so good at writing the
+    programs that from the external point of view - that is, from the
+    point of view of somebody outside the room in which I am locked -
+    my answers to the questions are absolutely indistinguishable from
+    those of native Chinese speakers. Nobody just looking at my
+    answers can tell that I don't speak a word of Chinese
+  \end{quote}
+
+and continues:
+  
+  \begin{quote}
+    As far as the Chinese is concerned, I simply behave like a
+    computer; I perform computational operations on formally specified
+    elements. For the purposes of the Chinese, I am simply an
+    instantiation of the computer program.
+  \end{quote}
+
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Searle's main argument}
+
+  \begin{quote}
+    \dots whatever purely formal principles you put into the computer,
+    they will not be sufficient for understanding, since a human will
+    be able to follow the formal principles without understanding
+    anything.
+  \end{quote}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Abelson's critique}
+
+  \begin{quote}
+    the understanding is in the programmer's rule set, which the
+    computer exercises
+  \end{quote}
+
+  \begin{quote}
+    I would be willing to bet that by the Chinese symbol test, most
+    of the people reading this don't really understand the
+    transcendental number e, or economic inflation, or nuclear power
+    plant safety, or how sailboats can sail upwind. (Be honest with
+    yourself!)
+  \end{quote}
+  
+  \begin{quote}
+    At what point does a person graduate from ``merely'' manipulating
+    rules to ``really'' understanding?
+  \end{quote}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Block's critique}
+
+  \begin{quote}
+    \dots his argument does not even have the right \emph{form}, for
+    in order to know whether we should reject the doctrine because of
+    its alleged counterintuitive consequences, we must know what sort
+    of evidence there is in \emph{favor} of the doctrine. If the
+    evidence for the doctrine is overwhelming, then incompatible
+    intuitions should be ignored.
+  \end{quote}
+
+  \begin{quote}
+    Does Searle really think that it is an initially congenial idea
+    that a hunk of gray jelly is the seat of his intentionality?
+    (Could one imagine a less likely candidate?) What makes gray jelly
+    so intuitively satisfying to Searle is obviously his knowledge
+    that brains are the seat of \emph{our} intentionality. But here we see
+    the difficulty in relying on considered intuitions, namely that
+    they depend on our beliefs, and among the beliefs most likely to
+    play a role in the case at hand are precisely our doctrines about
+    whether the formal symbol-manipulation theory of thinking is true
+    or false.
+\end{quote}
+
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Dennett's critique}
+
+  Dennett argues that the valid part of Searle's argument is not new:
+  
+  \begin{quote}
+    ``A computer whose only input and output was verbal would always
+    be blind to the meaning of what was written'' (Dennett 1969,
+    p. 182). The idea has been around for a long time.
+\end{quote}
+
+Also:
+
+\begin{quote}
+  Searle has confused different levels of explanation (and
+  attribution). \emph{I} understand English; my brain doesn't \dots
+\end{quote}
+
+If we suppose ``the hero in the Chinese room'' is more like a robot:
+\begin{quote}
+  Are we to imagine that when he responds to the Chinese for ``pass
+  the salt, please'' by getting his hand to grasp the salt and move it
+  in a certain direction, he doesn't notice that this is what he is
+  doing? In short, could anyone who became accomplished in this
+  imagined exercise fail to become fluent in Chinese in the process?
+\end{quote}
+\end{titledslide}
 
 \end{document}
