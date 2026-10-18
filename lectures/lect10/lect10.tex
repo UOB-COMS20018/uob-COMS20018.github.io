@@ -1,0 +1,158 @@
+\documentclass[10pt]{beamer}
+
+\newcommand{\lectnum}{L09}
+\newcommand{\lecttitle}{Philosophy of AI: LLMs, Rationality and Understanding}
+
+\input{preamble.tex}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north west, xshift=0.4cm, yshift=-0.4cm] at (current page.north west)
+      {\includegraphics[width=3.4cm]{figures/UoB_RGB_24.png}};
+  \end{tikzpicture}
+  \titlepage
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Agenda}
+
+  \begin{itemize}
+  \item We're going to look at some of the issues raised by Mike
+    Woolridge in his lecture
+    \href{https://www.youtube.com/watch?v=CyyL0yDhr7I}{This is not the
+      AI we were promised}
+  \item And some initiatives hoping to take AI further.
+\end{itemize}
+
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{LLMs (and related systems) are game changers}
+
+  \begin{itemize}
+  \item Similarly to Woolridge's talk we'll be looking at limitations
+    of LLMs etc.
+  \item But we're only interested in the limitations because they are
+    so impressive.
+  \end{itemize}
+
+\vspace*{2cm}
+  
+  \begin{quote}
+    There is only one thing in the world worse than being talked
+    about, and that is not being talked about.
+  \end{quote} \emph{The Picture of Dorian Gray}, Oscar Wilde.
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Well, what AI we're we promised?}
+
+  \begin{itemize}
+  \item It is important to understand what a revolution modern
+    generative AI is!
+  \item AI used to be about building `rational agents'.
+  \item Contemporary AI (e.g.\ LLMs) is not like this.
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Some LLM weirdness}
+
+  \begin{itemize}
+  \item Woolridge gives many (amusing) examples or LLM irrationality.
+  \item My friend Bryon Aragam also has some interesting examples from
+    a NeurIPS 2024 paper. Let's have a look at it \dots
+  \item As Woolridge observes: GPT-5 still ``hallucinates like
+    crazy''.
+  \item Looks like eliminating hallucinations properly is a tough problem.
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Sometimes the problems are more subtle}
+
+
+  \begin{itemize}
+  \item Gemini on ``What are Bayesian networks?'' and ``What is a
+    Bayesian network?''
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{LLM reasoning}
+
+  \begin{itemize}
+  \item One can, of course, show many examples of LLMs reasoning
+    correctly.
+  \item How do they do this?
+  \item As Woolridge notes: natural language \textbf{encodes} logical
+    reasoning and compositional structures. [my emphasis]
+  \item But are LLMs rational minds?
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Chain-of-thought reasoning}
+
+  \begin{itemize}
+  \item Chain-of-thought reasoning is the state-of-the-art.
+  \item Shifts effort to inference time.
+  \item ``Looks like algorithmic intelligence'' - Woolridge.
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{Robots}
+
+  \begin{itemize}
+  \item Robotic AI is the next threshold - Woolridge
+  \item We still don't have robots that can do, say, household chores.
+  \item So we have AI that replace some creative activities, but not
+    the boring stuff - should be the other way round!
+  \item Why is `physical AI' harder than `textual AI'?
+  \end{itemize}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{AI in the UK}
+
+  \begin{itemize}
+  \item ``UKRI launches two AI research labs to stay ahead in global
+    race''
+  \item \pounds 60 million in funding
+  \item UK government is looking for a niche for UK AI
+  \item Wants to have `AI sovereignty'
+  \end{itemize}
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{SOFAIR project}
+\begin{quote}
+    We're very excited that UCL will be leading the new SOFAIR Lab.
+    While current AI systems are impressive, many still suffer from
+    basic issues such as inaccurate responses to questions. These
+    systems often use similar underlying architectures, so SOFAIR will
+    bring together the broader sciences and fresh ideas to create a
+    new generation of open-source models. This will reduce dependency
+    on the small number of model providers, boosting UK sovereignty
+    and its position as a global player in AI. (David Barber, UCL)
+  \end{quote}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titledslide}{BOLD project}
+
+  \begin{quote}
+    The UK cannot win the global AI race simply by trying to outspend
+    the largest technology companies on data and compute.  BOLD is
+    about a different route: discovering fundamentally new ways to
+    build AI that are more efficient, more open and better aligned
+    with human needs.  By focusing on new paradigms for learning,
+    rather than only scaling existing methods, we aim to help secure
+    the UK's sovereign capability in AI and ensure that academic
+    research can shape the future of the field. (Jakob Foerster,
+    University of Oxford)
+  \end{quote}
+  
+\end{titledslide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
