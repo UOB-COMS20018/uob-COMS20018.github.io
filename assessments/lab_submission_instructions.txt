@@ -10,7 +10,7 @@ correctly.
 1. Which labs count, and when to submit
 ---------------------------------------
 
-- Assessed labs: weeks 3, 4, 7, 8, 9 and 11. The other labs are not marked.
+- Assessed labs: weeks 3, 4, 7, 8, 9 and 10. The other labs are not marked.
 - Each week: the notebook is released on Wednesday. Submit your completed
   notebook by Sunday 23:59. The answers are released on the next Monday.
 - A late submission gets 0 marks.
